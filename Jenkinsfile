@@ -2,10 +2,6 @@ pipeline {
 
     agent any
 
-    tools {
-        nodejs 'Node20'
-    }
-
     stages {
 
         stage('Install Dependencies') {
