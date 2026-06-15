@@ -7,15 +7,15 @@ export class LoginPage extends BasePage {
     private passWord;
     private loginButton;
 
+    async navigate(url: string) {
+        await this.page.goto(url);
+    }
+
     constructor(page: Page) {
         super(page);
         this.userName = page.locator('input[name="email"]');        
         this.passWord = page.locator('input[name="password"]');
         this.loginButton = page.getByText('Login');
-    }
-
-    async navigate(url: string) {
-        await this.page.goto(url);
     }
 
     async login(email: string, password: string) {
