@@ -8,7 +8,7 @@ export default defineConfig({
     use: {
         headless: false,
         actionTimeout: 5000,
-
+        baseURL: 'https://ui.freecrm.com',
         trace: 'on',
         video: "on",
         screenshot: "on"

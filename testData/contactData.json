@@ -1,8 +1,4 @@
-{
-  "address": "India",
-  "website": "https://www.test.com",
-  "description": "Updated company details",
-  "firstName": "Sharath",
+"firstName": "Sharath",
     "lastName": "Kumar",
     "middleName": "V",
     "company": "ABC Pvt Ltd",
@@ -11,7 +7,7 @@
     "category": "VIP",
     "status": "Active",
     "source": "Web",
-    "description1": "Important client",
+    "description": "Important client",
     "position": "QA Lead",
     "department": "Testing",
     "assistant": "John",
@@ -24,4 +20,3 @@
     "tags": "Automation",
     "referredBy": "Google",
     "supervisor": "Manager"
-}
