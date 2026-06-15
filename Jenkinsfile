@@ -18,7 +18,7 @@ pipeline {
 
         stage('Run FreeCRM Test') {
             steps {
-                bat 'npx playwright test FreeCRM.spec.ts'
+                bat 'npx playwright test'
             }
         }
     }

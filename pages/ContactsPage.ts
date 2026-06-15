@@ -11,14 +11,13 @@ export class ContactsPage extends BasePage {
 
     constructor(page: Page) {
         super(page);
-        this.contactsMenu = page.locator('a[href="/Contacts"]');
         this.createButton = page.getByRole('button', { name: 'Create' });
         this.saveButton = page.getByRole('button', {name: 'Save'});
         this.searchBox = page.getByPlaceholder('Search');
         this.dashboardToolbar = page.locator('#dashboard-toolbar');
     }
     async navigateToContacts() {
-        await this.click(this.contactsMenu);
+        await this.page.getByRole('link', { name: /Contacts/ }).click();
         await expect(this.page).toHaveURL(/.*contacts.*/);
     }
 
@@ -27,30 +26,23 @@ export class ContactsPage extends BasePage {
     }
 
     async createContact(contactFirstName: string, contactLastName: string, contactMiddleName: string, companyName: string,
-        email: string, description1: string, country: string, position: string, department: string) {
+        email: string, country: string, position: string, department: string) {
         await this.page.locator('input[name="first_name"]').first().fill(contactFirstName);
         await this.page.locator('input[name="last_name"]').last().fill(contactLastName);
         await this.page.locator('input[name="middle_name"]').fill(contactMiddleName);
-        await this.page.locator('input.search').nth(0).fill(companyName);
+        //await this.page.locator('input.search').nth(0).fill(companyName);
         await this.page.locator('input[name="value"][placeholder="Email address"]')
             .fill(email);
-        await this.page.locator('textarea[name="description"]')
-            .fill(description1);
-        await this.page.locator('input.search').nth(2).fill(country);
-        await this.page.locator('input[name="position"]').fill(position);
-        await this.page.locator('input[name="department"]').fill(department);
         await this.click(this.saveButton);
     }
 
-    async searchAndOpenContact(contactFirstName: string) {
+    async searchAndOpenContact(contactFirstName: string, contactLastName: string) {
         await this.enterText(this.searchBox, contactFirstName);
         await this.page.keyboard.press('Enter');
-        const companyFilter = this.page.locator('div[role="listitem"]',{ hasText: 'Company' });
+        const contactFilter = this.page.locator('div[role="listitem"]',{ hasText: 'Contact' });
         await this.page.mouse.move(1000, 0);
-        await companyFilter.click();
-        const row = this.page.locator('table tbody tr',{ hasText: contactFirstName });
-        await expect(row).toBeVisible();
-        await row.locator('a').first().click();
+        await contactFilter.click();
+        await this.page.getByText(`${contactFirstName} ${contactLastName}`).first().click();;
     }
 
     async updateContact(email: string, department: string, description1: string) {

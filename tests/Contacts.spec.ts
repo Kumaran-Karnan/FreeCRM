@@ -28,21 +28,21 @@ test.describe.serial('Contact CRUD Operations', () => {
     await test.step('Create Contact', async () => {
       await contactsPage.clickCreate();
       await contactsPage.createContact(contactData.firstName, contactData.lastName, contactData.middleName, contactData.company,
-        contactData.email, contactData.description, contactData.country, contactData.position, contactData.department);
+        contactData.email, contactData.country, contactData.position, contactData.department);
     }
     );
   });
 
-  test('Search COntact', async ({ page }) => {
+  test('Search Contact', async ({ page }) => {
     const contactsPage = new ContactsPage(page);
     await contactsPage.navigateToContacts();
-    await contactsPage.searchAndOpenContact(`${contactData.firstName} ${contactData.lastName}`);
+    await contactsPage.searchAndOpenContact(contactData.firstName, contactData.lastName);
   });
 
   test('Update Contact', async ({ page }) => {
     const contactsPage = new ContactsPage(page);
     await contactsPage.navigateToContacts();
-    await contactsPage.searchAndOpenContact(`${contactData.firstName} ${contactData.lastName}`);
+    await contactsPage.searchAndOpenContact(contactData.firstName, contactData.lastName);
     await contactsPage.updateContact(contactData.firstName, contactData.lastName, contactData.company);
   });
 
@@ -50,7 +50,7 @@ test.describe.serial('Contact CRUD Operations', () => {
     const contactsPage = new ContactsPage(page);
 
     await contactsPage.navigateToContacts();
-    await contactsPage.searchAndOpenContact(`${contactData.firstName} ${contactData.lastName}`);
+    await contactsPage.searchAndOpenContact(contactData.firstName, contactData.lastName);
     await contactsPage.deleteContact();
   });
 });
