@@ -16,18 +16,16 @@ pipeline {
             }
         }
 
-        stage('Run FreeCRM Test') {
+        stage('Run Tests') {
             steps {
                 bat 'npx cucumber-js'
             }
         }
+    }
 
-        post {
+    post {
         always {
             publishHTML([
-                // allowMissing: true,
-                // alwaysLinkToLastBuild: true,
-                // keepAll: true,
                 reportDir: 'playwright-report',
                 reportFiles: 'cucumber-report.html',
                 reportName: 'Playwright Report'
