@@ -18,7 +18,7 @@ pipeline {
 
         stage('Run FreeCRM Test') {
             steps {
-                bat 'npx playwright test'
+                bat 'npx cucumber-js'
             }
         }
 
@@ -29,7 +29,7 @@ pipeline {
                 // alwaysLinkToLastBuild: true,
                 // keepAll: true,
                 reportDir: 'playwright-report',
-                reportFiles: 'index.html',
+                reportFiles: 'cucumber-report.html',
                 reportName: 'Playwright Report'
             ])
         }
