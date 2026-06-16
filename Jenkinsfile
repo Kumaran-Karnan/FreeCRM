@@ -26,9 +26,9 @@ pipeline {
     post {
         always {
             publishHTML([
-                reportDir: 'playwright-report',
+                reportDir: '.',
                 reportFiles: 'cucumber-report.html',
-                reportName: 'Playwright Report'
+                reportName: 'Cucumber Report'
             ])
         }
     }
