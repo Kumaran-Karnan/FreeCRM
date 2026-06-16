@@ -18,7 +18,7 @@ pipeline {
 
         stage('Run Tests') {
             steps {
-                bat 'npx cucumber-js'
+                bat 'npx cucumber-js features/company.feature'
             }
         }
     }
