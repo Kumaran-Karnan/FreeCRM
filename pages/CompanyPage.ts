@@ -19,6 +19,7 @@ export class CompanyPage extends BasePage {
     }
 
     async navigateToCompanies() {
+        // await this.page.mouse.move(1000, 0);
         await this.click(this.companiesMenu);
         await expect(this.page).toHaveURL(/.*companies.*/);
     }
