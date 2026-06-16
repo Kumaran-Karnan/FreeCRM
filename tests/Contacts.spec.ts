@@ -36,13 +36,13 @@ test.describe.serial('Contact CRUD Operations', () => {
   test('Search Contact', async ({ page }) => {
     const contactsPage = new ContactsPage(page);
     await contactsPage.navigateToContacts();
-    await contactsPage.searchAndOpenContact(contactData.firstName, contactData.lastName);
+    await contactsPage.searchAndOpenContact(contactData.firstName, contactData.middleName, contactData.lastName);
   });
 
   test('Update Contact', async ({ page }) => {
     const contactsPage = new ContactsPage(page);
     await contactsPage.navigateToContacts();
-    await contactsPage.searchAndOpenContact(contactData.firstName, contactData.lastName);
+    await contactsPage.searchAndOpenContact(contactData.firstName, contactData.middleName, contactData.lastName);
     await contactsPage.updateContact(contactData.firstName, contactData.lastName, contactData.company);
   });
 
@@ -50,7 +50,7 @@ test.describe.serial('Contact CRUD Operations', () => {
     const contactsPage = new ContactsPage(page);
 
     await contactsPage.navigateToContacts();
-    await contactsPage.searchAndOpenContact(contactData.firstName, contactData.lastName);
+    await contactsPage.searchAndOpenContact(contactData.firstName, contactData.middleName, contactData.lastName);
     await contactsPage.deleteContact();
   });
 });
